@@ -4,23 +4,41 @@
 #
 
 import psycopg2
-
-
+db = psycopg2.connect("dbname=tournament")
+c = db.cursor()
 def connect():
-    """Connect to the PostgreSQL database.  Returns a database connection."""
-    return psycopg2.connect("dbname=tournament")
+    """ to the PostgreSQL database.  Returns a database connection."""
+    return psycopg2.connect("dbname=tournament;") 
+    """Already done"""
 
 
 def deleteMatches():
     """Remove all the match records from the database."""
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("DELETE FROM match;")
+    db.commit()
+    db.close()
 
 
 def deletePlayers():
     """Remove all the player records from the database."""
-
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("DELETE FROM player;")
+    db.commit()
+    db.close()
 
 def countPlayers():
     """Returns the number of players currently registered."""
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("SELECT COUNT(*) FROM player;")
+    results=c.fetchone()
+   
+    return results[0]
+    db.close()
+    
 
 
 def registerPlayer(name):
@@ -32,6 +50,12 @@ def registerPlayer(name):
     Args:
       name: the player's full name (need not be unique).
     """
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("INSERT INTO player (name) VALUES(%s);", (name,))
+    
+    db.commit()
+    db.close()
 
 
 def playerStandings():
@@ -47,7 +71,13 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
-
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    """Returns a list of tuples with id name and wins"""
+    c.execute("SELECT * FROM standings;")
+    Results=c.fetchall()
+    return Results
+    db.close()
 
 def reportMatch(winner, loser):
     """Records the outcome of a single match between two players.
@@ -56,7 +86,11 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
- 
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("INSERT INTO match (winner_id, loser_id) VALUES(%s,%s);", (winner,loser))
+    db.commit()
+    db.close()
  
 def swissPairings():
     """Returns a list of pairs of players for the next round of a match.
@@ -73,5 +107,26 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    db = psycopg2.connect("dbname=tournament")
+    c = db.cursor()
+    c.execute("SELECT * FROM standings;")
+    """standings returns a list of tuples with id, name, wins, totalmatches.
+    Need to extract just name and wins and concatenate them together into a list of tuples"""
+    data = c.fetchall()
+    """gets the length of the list so I can iterate over it """
+    length=len(data)
+    i=0
+    Result=[]
+    """This loop grabs the appropriate element of the list,
+    and then grabs the first two elements of that tuple and splices them together in a new list.
+    this new list then gets returned"""
+    while i<length:
+        a=data[i][0:2]
+        i+= 1
+        b=data[i][0:2]
+        i+= 1
+        Result.append(a+b)
+    return Result  
+    db.close()
 
 
