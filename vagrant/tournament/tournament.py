@@ -35,10 +35,8 @@ def countPlayers():
     c = db.cursor()
     c.execute("SELECT COUNT(*) FROM player;")
     results=c.fetchone()
-   
-    return results[0]
     db.close()
-    
+    return results[0]
 
 
 def registerPlayer(name):
@@ -76,8 +74,8 @@ def playerStandings():
     """Returns a list of tuples with id name and wins"""
     c.execute("SELECT * FROM standings;")
     Results=c.fetchall()
-    return Results
     db.close()
+    return Results
 
 def reportMatch(winner, loser):
     """Records the outcome of a single match between two players.
@@ -126,7 +124,6 @@ def swissPairings():
         b=data[i][0:2]
         i+= 1
         Result.append(a+b)
-    return Result  
     db.close()
-
+    return Result 
 
