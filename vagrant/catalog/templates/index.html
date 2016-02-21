@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<h1>Latest Items</h1>
+
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	
+	<ul>
+	{% for message in messages%}
+		<li><strong>{{message}}</strong></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+{% endwith %}
+
+
+	{% for i in allitems[::-1] %}
+		{{i.name}}<span style="color: grey;"> ({{i.category.name}})</span>
+		</br>
+	{% endfor %}
+
+
+	</br>
+	
+<h1>Categories</h1>
+	{% for i in categories %}
+		<a href="{{url_for('category',category_name=i.name)}}">{{i.name}}</a>
+		</br>
+	{% endfor %}
+</br>
+<a href="{{url_for('newCategory')}}">New Category</a>
+</body>
+</html>

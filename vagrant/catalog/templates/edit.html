@@ -1,0 +1,19 @@
+<html>
+<body>
+page to edit yo
+<a href="{{url_for('item', category_name=category.name, item_id=item.id, item_name=item.name)}}">cancel</a>
+
+<h1> Update {{ category.name}} {{item.name}} </h1>
+
+<form action="{{ url_for('editItem', category_name=category.name, item_id=item.id)}}" method = 'POST'>
+<p>Name:</p>
+	<input type='text' size='30' name='name' placeholder='{{item.name}}'>
+<p>Price:</p>
+	<input type='number' size='30' name='price' placeholder='{{item.price}}'> <p style="color: grey;">Enter value in cents, no decimals (e.g. for a $20.05 item, enter 2005)</p>
+<p>Description:</p>
+	<input type='text' size='100' name='description' placeholder='{{item.description}}'>
+
+<input type='submit' value='Edit'>
+</form>
+</body>
+</html>

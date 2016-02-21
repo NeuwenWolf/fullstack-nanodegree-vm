@@ -1,0 +1,18 @@
+<html>
+<body>
+
+<h1> Create a New {{ category.name }} Item </h1>
+
+<form action="{{ url_for('newItem', category_name=category.name)}}" method = 'post'>
+<p>Name:</p>
+	<input type='text' size='30' name='name'>
+<p>Price:</p>
+	<input type='number' size='30' name='price'> <p style="color: grey;">Enter value in cents, no decimals (e.g. for a $20.05 item, enter 2005)</p>
+<p>Description:</p>
+	<input type='text' size='100' name='description'>
+
+<input type='submit' value='Create'>
+</form>
+
+</body>
+</html>

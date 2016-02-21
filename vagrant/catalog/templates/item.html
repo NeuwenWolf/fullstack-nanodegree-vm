@@ -1,0 +1,18 @@
+<html>
+<body>
+	<a href="{{url_for('category', category_name=category.name)}}">{{category.name}}</a>
+	</br>
+	{{ item.name}}</br>
+	{{ item.description}}</br>
+	Price: ${{item.price/100}}</br>
+	</br>
+	<a href="{{url_for('editItem', category_name=category.name, item_id=item.id)}}">edit</a>
+	</br>
+	<a href="{{url_for('deleteItem', category_name=category.name, item_id=item.id)}}">delete</a>
+	
+	<!--insert a tags here to link to edit and delete using 'url_for'
+	url_for documentation: http://flask.pocoo.org/docs/0.10/quickstart/#url-building
+	-->
+
+</body>
+</html>

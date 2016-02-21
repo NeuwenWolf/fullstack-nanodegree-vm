@@ -1,0 +1,30 @@
+<html>
+<body>
+	<h1><a href="{{url_for('index')}}">{{category.name}}</a></h1>
+	
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	
+	<ul>
+	{% for message in messages%}
+		<li><strong>{{message}}</strong></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+{% endwith %}
+	
+	
+	<a href="{{url_for('newItem', category_name=category.name)}}">Create New Item</a>
+	</br>
+	</br>
+	{% for i in items %}
+	
+	<a href="{{url_for('item', category_name = category.name, item_id=i.id, item_name=i.name)}}">{{i.name}}</a>
+	</br>
+	
+	{% endfor %}
+	
+	
+	
+</body>
+</html>
