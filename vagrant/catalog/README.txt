@@ -1,4 +1,16 @@
-Place your catalog project in this directory.
+BUGS:
+most recently created category doesn't show up in index
+
+
+TO USE:
+
+Run dbsetup.py to initialize the Database. (type python dbsetup.py)
+
+Run application.py to initialize the webserver
+
+Navigate to http://localhost:5000/ to access the app.
+
+
 
 
 Mockups

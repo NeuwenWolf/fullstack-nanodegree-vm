@@ -228,6 +228,24 @@ label {
     justify-content: space-between;
 
 }
+.badoptionBtn:hover{
+	background: #FF0000;
+	background: -webkit-linear-gradient(top,#FF0000,#D00000);
+}
+.badoptionBtn:active{
+	background: #000000;
+	background: -webkit-linear-gradient(top,#4A0000,#000000);
+	border-color: red;
+}
+.neutraloptionBtn:hover{
+	background: #FF9900;
+	background: -webkit-linear-gradient(top,#FF9900,#FFA825);
+}
+.neutraloptionBtn:active{
+	background: #FFD400;
+	background: -webkit-linear-gradient(top,#FFD400,#F7CD00);
+}
+
 
 
 

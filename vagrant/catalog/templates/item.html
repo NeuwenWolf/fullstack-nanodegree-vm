@@ -29,9 +29,9 @@ display:inline;">
 	</div>
 </div>
 <div class="container footer">
-	<a class="optionBtn" href="{{url_for('editItem', category_name=category.name, item_id=item.id)}}">edit</a>
+	<a class="optionBtn neutraloptionBtn" href="{{url_for('editItem', category_name=category.name, item_id=item.id)}}">Edit</a>
 	
-	<a class="optionBtn" style="float:right;" href="{{url_for('deleteItem', category_name=category.name, item_id=item.id)}}">delete</a>
+	<a class="optionBtn badoptionBtn" style="float:right;" href="{{url_for('deleteItem', category_name=category.name, item_id=item.id)}}">Delete</a>
 </div>
 
 </body>
