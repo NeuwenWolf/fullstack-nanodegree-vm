@@ -2,83 +2,41 @@ Place your catalog project in this directory.
 
 
 Mockups
-	html for each page
-	design URLS
+	!html for each page
+	!design URLS
 
 
 
 
 
 Routing
-	flask
+	!flask
 
 Templates & Forms
+	!
 
 CRUD Functionality
+	!
 
 API Endpoints
+	!
 
 Styling & Messages
+	! (can i style the messages?)
+AUTHORIZATION
 
 
 
-interfacing with DB through sql alchemy:
-##This at start:
+This application allows you to create a basic Catalog including categories, and items within the categories.
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from dbsetup import Base, Category, Item
+Categories must have unique names.
 
-engine = create_engine('sqlite:///Catalog.db')
-Base.metadata.bind=engine
-DBSession = sessionmaker(bind = engine)
-session = DBSession()
+You can add categories, and items to categories, using the in-app buttons.
 
+Prices are stored as integers and divided by 100 when displayed to the user.  There is an in-app hint to help you remember to enter your prices x100.
 
+There is also a JSON API Endpoint for each category, listing each item in the category (/category/<path:category_name>/JSON/) 
+and also an endpoint for each item (/category/<path:category_name>/<int:item_id>/<path:item_name>/JSON/)
 
-##Then can do operations like (add/create):
+AUTHORIZATION is to be implemented to limit the user's ability to edit certain pages and items that don't belong to them.
 
-myFirstCategory = Category(name = "Snowboarding")
-session.add(myFirstCategory)
-session.commit()
-
-#Read
-session.query(Category).all()
-firstResult = session.query(Category).first()
-
-##Update:
-
-find:
-reset:
-add:
-commit:
-
-goggles = session.query(Item).filter_by(name= 'Goggles')
-specificGoggles = session.query(Item).filter_by(id = 8).one()
-specificGoggles.price = 299  {does the int need quotes?}[I am doing integer prices so all displayed prices will need to be divided by 100 or otherwise formatted]
-session.add(specificGoggles)
-session.commit()
-
-for goggle in goggles:
-	if goggle.price != 299 {does the int need quotes?}
-		goggle.price = 299
-		session.add(goggle)
-		session.commit()
-
-##Delete
-find
-delete
-commit
-
-cheapSki = session.query(Item).filter_by(name = 'Budget Ski').one()
-print cheapSki.catalog.name
-session.delete(cheapSki)
-session.commit()
-
-## For loop for showing a list of everything:
-
-items = session.query(Item).all()
-for item in items:
-	print item.name
-	print item.description
-	/n
