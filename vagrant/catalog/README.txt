@@ -1,5 +1,6 @@
 BUGS:
-most recently created category doesn't show up in index
+When entering item names etc and unique constraint fails, it does not fail gracefully and the app needs to be rebooted.
+Add error handling for this.
 
 
 TO USE:

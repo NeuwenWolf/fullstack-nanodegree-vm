@@ -19,7 +19,7 @@
 <div style="width:100%; text-align:center;">
 	<div class="wrapper" style="display:flex; width: 80%; margin: auto;">
 		<div class="container" style="flex: 0 0 25%; min-width:200px; position:relative; margin: 5px; margin-left:auto;"><h1 class="pagetitle">Categories</h1>
-			<table>
+			<table style="margin-bottom: 35px;">
 				{% for i in categories %}
 				<tr>
 					<td><a style="width: 100%" class="link" href="{{url_for('category',category_name=i.name)}}">{{i.name}}</a></td>
