@@ -1,18 +1,37 @@
 <html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}"
+</head>
 <body>
-
-<h1> Create a New {{ category.name }} Item </h1>
-
+<div class="container">
+<h1 class="pagetitle"> Create a New {{ category.name }} Item </h1>
+</div>
+<div class="container">
 <form action="{{ url_for('newItem', category_name=category.name)}}" method = 'post'>
-<p>Name:</p>
-	<input type='text' size='30' name='name'>
-<p>Price:</p>
-	<input type='number' size='30' name='price'> <p style="color: grey;">Enter value in cents, no decimals (e.g. for a $20.05 item, enter 2005)</p>
-<p>Description:</p>
-	<input type='text' size='100' name='description'>
+	<div class="inputbox">
+		<label style="font-weight: bold;"for="name">Item Name</label>
+		<input type='text' size='30' name='name'>
+	</div>
+	</br>
+	<div class="inputbox">
+		<label style="font-weight: bold;"for="price">Price</label>
+		<input type='number' size='30' name='price'> <p class="tip">Enter value in cents, no decimals (e.g. for a $20.05 item, enter 2005)</p>
+	</div>
+	</br>
+	<div class="inputbox">
+		<label style="font-weight: bold;"for="description">Description</label>
+		<input id="description" type='text' size='60' name='description'>
+	</div>
+	</br>
+<div>
+<input style="display: block; margin: 0 auto; float: none;" class="optionBtn" type='submit' value='Create'>
+</div>
 
-<input type='submit' value='Create'>
 </form>
+</div>
+<div class="container centerthis">
+	<a class="optionBtn"href="{{url_for('category', category_name=category.name)}}">cancel</a>
+</div>
 
 </body>
 </html>

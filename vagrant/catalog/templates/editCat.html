@@ -1,0 +1,25 @@
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}"
+</head>
+<body>
+
+
+<div class="container">
+<h1 class="pagetitle"> Rename {{ category.name}}</h1>
+</div>
+<div class="container">
+<form action="{{ url_for('editCategory', category_name=category.name)}}" method = 'POST'>
+<div class="inputbox">
+	<label style="font-weight: bold;"for="name">Category Name</label>
+	<input type='text' size='30' name='name' placeholder='{{category.name}}'>
+	</div></br>
+
+<input style="display: block; clear:both; margin: 0 auto; float: none;" class="optionBtn"type='submit' value='Edit'>
+</form>
+</div>
+<div class="container centerthis">
+	<a class="optionBtn"href="{{url_for('category', category_name=category.name)}}">cancel</a>
+</div>
+</body>
+</html>

@@ -1,25 +1,20 @@
 <html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}"
+</head>
 <body>
-
-<h1> Create a New Category</h1>
-
-{% with messages = get_flashed_messages() %}
-	{% if messages %}
-	
-	<ul>
-	{% for message in messages%}
-		<li><strong>{{message}}</strong></li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-{% endwith %}
-
-<form action="{{ url_for('newCategory')}}" method = 'post'>
-<p>Name:</p>
-	<input type='text' size='30' name='name'>
-
-<input type='submit' value='Create'>
-</form>
-
+<div class="container">
+	<h1 class="pagetitle"> Create a New Category</h1>
+</div>
+<div class="container">
+	<form style="text-align:center; margin: 30px;" action="{{ url_for('newCategory')}}" method = 'post'>
+		<label style="font-weight: bold;"for="name">New Category Name</label>
+		<input id="name" type='text' size='30' name='name'>
+		<input class="optionBtn" type='submit' value='Create'>
+	</form>
+</div>
+<div class="container" style="text-align: center;">
+	<a class="link" href="{{url_for('index')}}">Home</a>
+</div>
 </body>
 </html>

@@ -17,40 +17,42 @@ class Category(Base):
 
     id = Column(Integer, primary_key = True)
 	
-@property
-def serialize(self):
-	"""Return object data in easily serializeable format"""
-	return {
-		'name': self.name,
-		'id': self.id,
-	}
+	
+
 		
 		
 class Item(Base):
+	__tablename__ = 'item'
 
-    __tablename__ = 'item'
+	name = Column(String(80), nullable = False)
+		
+	price = Column(Integer, nullable = False)
 
-    name = Column(String(80), nullable = False)
+	id = Column(Integer, primary_key = True)
+
+	description = Column(String(250), nullable = False)	
+
+	category_id = Column(Integer, ForeignKey('category.id'))
+		
+	category = relationship(Category)
+
+	@property
+	def serialize(self):
+		"""Return object data in easily serializeable format"""
+		return {
+			'name': self.name,
+			'description': self.description,
+			'id': self.id,
+			'price': self.price,
+			'category': self.category.name,
+			
+		}
 	
-    price = Column(Integer, nullable = False)
-
-    id = Column(Integer, primary_key = True)
-
-    description = Column(String(250), nullable = False)	
-
-    category_id = Column(Integer, ForeignKey('category.id'))
-    
-    category = relationship(Category)
 	
-@property
-def serialize(self):
-    """Return object data in easily serializeable format"""
-    return {
-        'name': self.name,
-        'description': self.description,
-        'id': self.id,
-        'price': self.price,
-    }
+	
+	
+	
+	
 
 #### AT END OF FILE ####
 engine = create_engine(

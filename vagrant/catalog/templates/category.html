@@ -1,30 +1,49 @@
 <html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}"
+</head>
 <body>
-	<h1><a href="{{url_for('index')}}">{{category.name}}</a></h1>
+	<div class="container navbar"><a class="link" href="{{url_for('index')}}">Home</a></div>
+	<div class="container"><h1 class="pagetitle">{{category.name}}</h1> </div>
 	
 {% with messages = get_flashed_messages() %}
 	{% if messages %}
 	
 	<ul>
 	{% for message in messages%}
-		<li><strong>{{message}}</strong></li>
+		<li class="container"><strong>{{message}}</strong></li>
 		{% endfor %}
 	</ul>
 	{% endif %}
 {% endwith %}
 	
 	
-	<a href="{{url_for('newItem', category_name=category.name)}}">Create New Item</a>
-	</br>
-	</br>
+	<div class="container">
+	<table class="itemlist">
+		<th>Item</th>
+		<th>Price</th>
 	{% for i in items %}
-	
-	<a href="{{url_for('item', category_name = category.name, item_id=i.id, item_name=i.name)}}">{{i.name}}</a>
-	</br>
+		
+		<tr>
+			<td>
+				<a class="itemname link"  href="{{url_for('item', category_name = category.name, item_id=i.id, item_name=i.name)}}">{{i.name}}</a>
+			</td>
+			<td>
+				<span class="link price">${% if i.price %} {{i.price/100}} {% endif %} </span>
+			</td>
+		</tr>
 	
 	{% endfor %}
+	</table>
+	</div>
 	
-	
+	<div class="container">
+	<div class="footer">
+		<a class="optionBtn" href="{{url_for('newItem', category_name=category.name)}}">Create New Item</a>
+		<a class="optionBtn" href="{{url_for('editCategory', category_name=category.name)}}">Edit Category Name</a>
+		<a class="optionBtn" href="{{url_for('deleteCat', category_name=category.name)}}">Delete This Category</a>
+	</div>
+	</div>
 	
 </body>
 </html>
