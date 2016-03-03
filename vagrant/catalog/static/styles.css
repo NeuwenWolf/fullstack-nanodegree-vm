@@ -215,9 +215,10 @@ label {
 #itemdescription{
 	padding:10px;
 	border-radius:2px;
-	
 	background: #39AB91;
-	color: black;
+	color: black;	
+}
+#gSigninBtn{
 	
 }
 .centerthis{
