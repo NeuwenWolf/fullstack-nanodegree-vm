@@ -1,0 +1,33 @@
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{url_for('static', filename='styles.css')}}"
+</head>
+<body>
+<div class="container">
+<a style="text-decoration: none;"href="{{url_for('category', category_name=category.name)}}"><h1 class="link pagetitle">{{category.name}}</h1></a>
+</div>
+
+{% with messages = get_flashed_messages() %}
+<div class="container" style="display:none;
+	{% if messages %}
+display:inline;">	
+	<ul>
+	{% for message in messages%}
+		<li class="container"><strong>{{message}}</strong></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	">
+	{% endif %}
+{% endwith %}
+</div>
+<div class="container">
+	<div id="item">
+	<div id="itemname">{{ item.name}}</div>
+	<div id="itemprice"> Price: <strong style="background:#7400E4; padding: 3px 10px 3px 10px; border-radius: 3px;">${% if item.price %} {{item.price/100}} {% endif %}</strong></div>
+	<div id="itemdescription"><strong>Description:</strong> {{ item.description}}</div>
+	</div>
+</div>
+
+</body>
+</html>

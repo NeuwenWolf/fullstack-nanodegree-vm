@@ -1,6 +1,10 @@
+KEY NOTES:
+
+Web app runs on port 8080
+
 BUGS:
-When entering item names etc and unique constraint fails, it does not fail gracefully and the app needs to be rebooted.
-Add error handling for this.
+When entering item names etc. and unique constraint fails, it does not fail gracefully and the app needs to be rebooted.
+Could add error handling for this.
 
 
 TO USE:
@@ -9,34 +13,12 @@ Run dbsetup.py to initialize the Database. (type python dbsetup.py)
 
 Run application.py to initialize the webserver
 
-Navigate to http://localhost:5000/ to access the app.
-
-
-
-
-Mockups
-	!html for each page
-	!design URLS
+Navigate to http://localhost:8080/ to access the app.
 
 
 
 
 
-Routing
-	!flask
-
-Templates & Forms
-	!
-
-CRUD Functionality
-	!
-
-API Endpoints
-	!
-
-Styling & Messages
-	! (can i style the messages?)
-AUTHORIZATION
 
 
 
@@ -51,5 +33,7 @@ Prices are stored as integers and divided by 100 when displayed to the user.  Th
 There is also a JSON API Endpoint for each category, listing each item in the category (/category/<path:category_name>/JSON/) 
 and also an endpoint for each item (/category/<path:category_name>/<int:item_id>/<path:item_name>/JSON/)
 
-AUTHORIZATION is to be implemented to limit the user's ability to edit certain pages and items that don't belong to them.
+Authentication is provided via Google+ only so you will require an account with Google to access the advanced app functionality.
+
+
 

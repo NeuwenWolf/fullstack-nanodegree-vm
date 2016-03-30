@@ -212,12 +212,20 @@ label {
 	padding:10px;
 	font-weight:bold;
 }
-#itemdescription{
+#itemdescription {
 	padding:10px;
 	border-radius:2px;
 	background: #39AB91;
 	color: black;	
 }
+#result {
+	padding:10px;
+	border-radius:2px;
+	background: #39AB91;
+	color: black;
+	display: none;
+}
+
 #gSigninBtn{
 	
 }
